@@ -1,6 +1,11 @@
 import * as Haptics from 'expo-haptics';
+import { Platform } from 'react-native';
 
-export const triggerHaptic = (type: 'light' | 'medium' | 'heavy' | 'success' | 'warning' | 'error' = 'light') => {
+export type HapticType = 'light' | 'medium' | 'heavy' | 'success' | 'warning' | 'error' | 'selection';
+
+export const triggerHaptic = (type: HapticType = 'selection') => {
+  if (Platform.OS === 'web') return;
+
   switch (type) {
     case 'light':
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -20,5 +25,15 @@ export const triggerHaptic = (type: 'light' | 'medium' | 'heavy' | 'success' | '
     case 'error':
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
       break;
+    case 'selection':
+      Haptics.selectionAsync();
+      break;
   }
+};
+
+// Advanced pattern for "Double Tap" or "Like"
+export const triggerDoubleHaptic = async () => {
+  if (Platform.OS === 'web') return;
+  await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+  setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium), 100);
 };
