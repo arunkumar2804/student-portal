@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, SafeAreaView, Platform } from 'react-native';
-import { MotiView } from 'moti';
 import { Bell, Search, Calendar as CalendarIcon, Sparkles } from 'lucide-react-native';
 import AttendanceCard from '../../components/AttendanceCard';
 import SectionHeader from '../../components/SectionHeader';

@@ -1,21 +1,16 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { MotiView } from 'moti';
 import { TrendingUp } from 'lucide-react-native';
 
 export default function AttendanceCard({ percentage }: { percentage: number }) {
   return (
-    <MotiView 
-      from={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
+    <View 
       className="bg-dark-card border border-dark-border rounded-3xl p-6 mx-6 flex-row items-center"
     >
       <View className="relative w-20 h-20 items-center justify-center">
         {/* Simple progress circle representation */}
         <View className="w-20 h-20 rounded-full border-4 border-dark-border" />
-        <MotiView 
-          from={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+        <View 
           className="absolute w-20 h-20 rounded-full border-4 border-primary" 
           style={{ borderRightColor: 'transparent', borderBottomColor: 'transparent', transform: [{ rotate: '45deg' }] }}
         />
@@ -41,6 +36,6 @@ export default function AttendanceCard({ percentage }: { percentage: number }) {
           </View>
         </View>
       </View>
-    </MotiView>
+    </View>
   );
 }
